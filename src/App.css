@@ -1,0 +1,208 @@
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-dark: #0f172a;
+  --text-main: #f8fafc;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  /* Premium Mesh Gradient Background */
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.app-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* --- HEADER & NAVIGATION --- */
+.app-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.gradient-text {
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  letter-spacing: -2px;
+}
+
+.app-header p {
+  color: #94a3b8;
+  font-size: 1.1rem;
+}
+
+/* Container for the whole nav area */
+.template-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.nav-label {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* The group of number buttons */
+.number-toggle {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 5px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.num-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.num-btn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* Active number style */
+.num-btn.active {
+  background: #6366f1;
+  color: white;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* Button Group for Print/Reset */
+.button-group {
+  display: flex;
+  gap: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 20px;
+}
+
+/* --- PRINT BUTTON --- */
+.print-btn {
+  background: white;
+  color: var(--bg-dark);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.print-btn:hover {
+  background: #f1f5f9;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.reset-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+  background: #ef4444; /* Red for warning */
+  border-color: #ef4444;
+}
+
+/* --- WORKSPACE / RESUME PAPER --- */
+.single-layout {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.resume-paper {
+  background: white;
+  width: 210mm; /* A4 Width */
+  min-height: 297mm; /* A4 Height */
+  padding: 0;
+  border-radius: 4px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+/* Template Specific Layout Logic */
+.template-minimal .resume-body {
+  display: block !important;
+}
+
+/* --- PRINT RULES (Critical for PDF) --- */
+@media print {
+  .no-print, 
+  .template-tabs, 
+  .app-header {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    background-image: none !important;
+  }
+
+  .app-wrapper {
+    padding: 0;
+    margin: 0;
+    max-width: none;
+  }
+
+  .single-layout {
+    padding: 0;
+  }
+
+  .resume-paper {
+    width: 100%;
+    margin: 0;
+    box-shadow: none !important;
+    border: none;
+  }
+}

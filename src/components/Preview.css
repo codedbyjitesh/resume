@@ -1,0 +1,172 @@
+/* --- A4 PAPER CORE --- */
+.preview-container {
+  background: white;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 60px;
+  box-sizing: border-box;
+  color: #1a202c;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.4s ease;
+}
+
+/* --- INLINE EDITING CORE --- */
+.inline-input, 
+.inline-textarea {
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  font-family: inherit;
+  color: inherit;
+  padding: 4px;
+  border-radius: 4px;
+  outline: none;
+  display: block;
+  box-sizing: border-box; /* CRITICAL: Keeps padding inside the width */
+}
+
+.inline-textarea {
+  line-height: 1.8;
+  overflow: hidden;
+  height: auto;
+  min-height: 50px;
+  field-sizing: content;
+}
+
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #6366f1;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+/* --- LAYOUT 1: MODERN SPLIT --- */
+.template-modern .resume-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 4px solid #1a202c;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+.template-modern .resume-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* --- LAYOUT 2: MINIMALIST --- */
+.template-minimal .resume-header { text-align: center; margin-bottom: 40px; }
+.template-minimal .contact-info { display: flex; justify-content: center; gap: 20px; }
+.template-minimal .resume-body { display: flex; flex-direction: column; gap: 30px; }
+
+/* --- LAYOUT 3: EXECUTIVE (FIXED OVERLAP) --- */
+.template-executive .resume-header {
+  background: #1a202c;
+  color: white;
+  margin: -60px -60px 40px -60px;
+  padding: 50px 60px;
+}
+.template-executive .user-role { color: #a5b4fc; }
+.template-executive .contact-info { display: flex; gap: 15px; }
+.template-executive .contact-info .inline-input { color: #cbd5e0; width: auto; }
+
+.template-executive .resume-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* This prevents textareas from "bursting" out of their columns */
+.template-executive .side-col, 
+.template-executive .main-col {
+  overflow-wrap: break-word;
+}
+
+/* --- LAYOUT 4: ELEGANT (CLASSIC SERIF) --- */
+.template-elegant.preview-container {
+  font-family: 'Playfair Display', serif; /* Or 'Georgia' if you haven't imported Playfair */
+  padding: 80px; /* Extra padding for a "luxury" look */
+  border: 1px solid #e2e8f0;
+}
+
+.template-elegant .user-name {
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  border-bottom: 1px solid #1a202c;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.template-elegant .user-role {
+  text-align: center;
+  color: #4a5568;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.template-elegant .contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 15px;
+  margin-bottom: 40px;
+}
+
+.template-elegant .contact-info .inline-input {
+  width: auto;
+  font-size: 0.85rem;
+}
+
+.template-elegant .resume-body {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.template-elegant .section-title {
+  text-align: center;
+  border: none;
+  font-style: italic;
+  color: #1a202c;
+  position: relative;
+  margin-bottom: 25px;
+}
+
+/* Adds the stylish lines on the left and right of the title */
+.template-elegant .section-title::before,
+.template-elegant .section-title::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.template-elegant .section-title::before { left: 0; }
+.template-elegant .section-title::after { right: 0; }
+/* --- PRINT --- */
+@media print {
+  body { background: white !important; }
+  .preview-container {
+    width: 100% !important;
+    box-shadow: none !important;
+    padding: 15mm !important;
+    margin: 0 !important;
+  }
+  .inline-input, .inline-textarea {
+    border: none !important;
+    padding: 0 !important;
+  }
+}
