@@ -170,3 +170,89 @@
     padding: 0 !important;
   }
 }
+
+/* --- MOBILE RESPONSIVE LAYER --- */
+@media screen and (max-width: 768px) {
+  /* 1. Reset the A4 Paper Core */
+  .preview-container {
+    width: 100% !important;
+    min-height: auto !important; /* Prevents empty white space */
+    padding: 10px !important;
+    margin: 0 auto;
+    box-shadow: none;
+    border-radius: 8px;
+  }
+
+  /* 2. Fix Section Titles */
+  .section-title::before,
+  .section-title::after {
+    display: none; /* Remove Elegant lines if they overlap text */
+  }
+
+ .resume-section .section-title {
+  font-size: 0.6rem !important ;
+  letter-spacing: 1px;
+}
+ .resume-header .inline-input{
+    font-size: 0.6rem !important ;
+  }
+ .resume-body .inline-textarea {
+    font-size: 0.6rem !important ;
+  }
+
+  /* 3. Handle Template Specific Grids */
+/*layout 1*/
+  .template-modern .resume-header {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+
+.template-modern .resume-body {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+.main-col, .side-col {
+  width: 100%;
+  min-width: 0; /* VERY IMPORTANT for grid overflow fix */
+}
+
+/*layout 2 */
+.template-minimal .resume-header { text-align: center; margin-bottom: 20px; }
+.template-minimal .contact-info { display: flex; justify-content: center; gap: 10px; }
+.template-minimal .resume-body { display: flex; flex-direction: column; gap: 15px; }
+
+/*layout 3: Fix the header overlap and grid stacking */
+  /* Executive: Fix negative margins and grid */
+  .template-executive .resume-header {
+    margin: -20px -20px 20px -20px; /* Adjust to match the new container padding */
+    padding: 30px 20px;
+  }
+
+  .template-executive .contact-info {
+    display: flex;
+    gap: 5px;
+  }
+
+  .template-executive .resume-body {
+    grid-template-columns: 1fr 1fr; /* Stack side and main columns */
+    gap: 12.5px;
+  }
+
+  /* Minimal & Elegant: Fix contact info wrapping */
+  
+  .template-elegant .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* 4. Improve Input Experience on Mobile */
+  .inline-input {
+    font-size: 16px !important; /* Prevents iOS from auto-zooming on focus */
+  }
+
+  .user-name {
+    font-size: 1.8rem !important; /* Scale down large headers */
+  }
+}
